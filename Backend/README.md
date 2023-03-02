@@ -1,4 +1,4 @@
-# 시험 안내 
+# 시험 안내
 
 git에 익숙해지기 위한 두 가지 Test가 진행될 예정입니다.
 
@@ -25,24 +25,24 @@ repository 이름은 다음과 같이 설정해주세요.
 
 clone 받은 해당 디렉토리를 본인 github의 `git-practice` 레포지토리에 연동해주세요.
 
-  - `wecode-git-test` 레포지토리를 클론해주세요.
-   
-    ```shell
-        $ git clone https://github.com/wecode-bootcamp-korea/wecode-git-test.git
-    ```
-    
-  - 터미널에서 클론 받은 레포지토리의 디렉토리 경로로 이동 후 remote 연결을 해제해주세요.
-   
-    ```shell
-        $ git remote remove origin
-    ```
+- `wecode-git-test` 레포지토리를 클론해주세요.
 
-  - 이후 개인 Github에 생성한 레포지토리의 주소로 remote를 다시 연동해주세요.
-   
-    ```shell
-        $ git remote add origin https://github.com/GITHUB_USERNAME/git-practice.git
-    ```
-    
+  ```shell
+      $ git clone https://github.com/wecode-bootcamp-korea/wecode-git-test.git
+  ```
+
+- 터미널에서 클론 받은 레포지토리의 디렉토리 경로로 이동 후 remote 연결을 해제해주세요.
+
+  ```shell
+      $ git remote remove origin
+  ```
+
+- 이후 개인 Github에 생성한 레포지토리의 주소로 remote를 다시 연동해주세요.
+
+  ```shell
+      $ git remote add origin https://github.com/GITHUB_USERNAME/git-practice.git
+  ```
+
 git 명령어를 실제로 적용해보고, conflict가 발생했을 때 이를 해결해보겠습니다.
 
 아래 설명을 잘 읽고 시험을 진행해주세요.
@@ -66,28 +66,14 @@ git 명령어를 실제로 적용해보고, conflict가 발생했을 때 이를 
 2. `feature/signup` 브랜치로 이동하여 아래 예시코드와 동일한 내용을 `app.js`에서 작업해주세요.
 
 3. 위 작업이 완료되었으면 해당 브랜치를 `push`하여 `PR (pull request)`을 생성해주세요.  
-commit message 컨벤션을 따르고 있는지 다시 한번 확인해주세요!
+   commit message 컨벤션을 따르고 있는지 다시 한번 확인해주세요!
 
 예시 코드)
 
 ```javascript
-app.post('/users/signup', async (req, res) => {
-  const { username, email, password } = req.body
-    return await myDataSource.query(`
-      INSERT INTO
-        users (
-          username,
-          email,
-          password			
-        )
-      VALUES (
-        ?,
-        ?,
-        ?
-      )
-    `, [username, email, password])
-})
+
 ```
+
 <br>
 
 ## 1-3. feature/signin
@@ -97,33 +83,37 @@ app.post('/users/signup', async (req, res) => {
 2. `feature/signin` 브랜치로 이동하여 아래 예시코드와 동일한 내용을 `app.js`에서 작업해주세요.
 
 예시 코드)
+
 ```javascript
-app.post('/users/signin', async (req, res) => {
+app.post("/users/signin", async (req, res) => {
   const { email, password } = req.body;
-  const user = await myDataSource.query(`
+  const user = await myDataSource.query(
+    `
     SELECT
       users.id
     FROM
       users
     WHERE
       users.email = ?
-   `, [email]);
-	
+   `,
+    [email]
+  );
+
   if (!user) {
-    res.json({message: "SIGNUP_REQUIRED"});
+    res.json({ message: "SIGNUP_REQUIRED" });
   }
-	
-  return res.json({ userId: user.id});
-})
+
+  return res.json({ userId: user.id });
+});
 ```
 
-3. `과제 : 아래와 같이 PR 2개가 등록 된 브라우저의 화면을 캡쳐하여 구글 클래스룸에 업로드 해주세요.` 
+3. `과제 : 아래와 같이 PR 2개가 등록 된 브라우저의 화면을 캡쳐하여 구글 클래스룸에 업로드 해주세요.`
 
 ![back-1](https://user-images.githubusercontent.com/93123657/203455693-81b944cc-7f92-47ba-a4d1-5ffeefc02f45.png)
 
 <br>
 
-## 1-4. Merge sign-up feature PR 
+## 1-4. Merge sign-up feature PR
 
 1. github 레포지토리로 이동 후 `feature/signup` PR을 `merge`해 주세요.
 
@@ -144,7 +134,6 @@ app.post('/users/signin', async (req, res) => {
 4. `과제 : 아래와 같이 github에서 feature/signin 관련 PR에서 Conflict가 해결된 화면을 캡쳐하여 구글 클래스룸에 업로드 해주세요.`
 
 ![back-3](https://user-images.githubusercontent.com/93123657/203455788-11e71d2d-aa13-4ddd-a197-8658308675ee.png)
-
 
 <br>
 <br>
