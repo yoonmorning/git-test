@@ -87,7 +87,7 @@ git 명령어를 실제로 적용해보고, conflict가 발생했을 때 이를 
 ```javascript
 app.post("/users/signin", async (req, res) => {
   const { email, password } = req.body;
-  const user = await myDataSource.query(
+  const user = await myDataSourcegit.query(
     `
     SELECT
       users.id
